@@ -1,16 +1,21 @@
 import FilterTable from "../components/FilterTable";
 
 const DATA = [
-  { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
-  { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
-  { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
-  { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
-  { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
-  { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
+  { category: "Fruits", difficulty: "$1", learned: true, name: "Apple" },
+  { category: "Fruits", difficulty: "$1", learned: true, name: "Dragonfruit" },
+  {
+    category: "Fruits",
+    difficulty: "$2",
+    learned: false,
+    name: "Passionfruit",
+  },
+  { category: "Vegetables", difficulty: "$2", learned: true, name: "Spinach" },
+  { category: "Vegetables", difficulty: "$4", learned: false, name: "Pumpkin" },
+  { category: "Vegetables", difficulty: "$1", learned: true, name: "Peas" },
 ];
 
 function Flips() {
-  return <FilterTable products={DATA} />;
+  return <FilterTable content={DATA} type="tricks" />;
 }
 
 export default Flips;

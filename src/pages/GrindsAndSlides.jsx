@@ -1,16 +1,26 @@
 import FilterTable from "../components/FilterTable";
 
 const DATA = [
-  { category: "Grind", price: "hard", stocked: false, name: "Smith" },
-  { category: "Grind", price: "medium", stocked: true, name: "Nosegrind" },
-  { category: "Grind", price: "easy", stocked: true, name: "50-50" },
-  { category: "Slide", price: "hard", stocked: false, name: "Noseblunt" },
-  { category: "Slide", price: "easy", stocked: true, name: "Boardslide" },
-  { category: "Grind", price: "easy", stocked: true, name: "Five-O" },
+  {
+    difficulty: "hard",
+    learned: false,
+    name: "Smith",
+    clip: "https://www.youtube.com/embed/QxhxjUKvpv0",
+  },
+  {
+    difficulty: "medium",
+    learned: true,
+    name: "Nosegrind",
+    clip: "https://www.youtube.com/embed/QxhxjUKvpv0",
+  },
+  { difficulty: "easy", learned: true, name: "50-50" },
+  { difficulty: "easy", learned: true, name: "Five-O" },
+  { difficulty: "hard", learned: false, name: "Noseblunt" },
+  { difficulty: "easy", learned: true, name: "Boardslide" },
 ];
 
 function GrindsAndSlides() {
-  return <FilterTable products={DATA} />;
+  return <FilterTable content={DATA} type="tricks" />;
 }
 
 export default GrindsAndSlides;

@@ -1,56 +1,91 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function ProductCategoryRow({ category }) {
+function TrickRow({ handleClick, object, expandRow, check }) {
   return (
-    <tr>
-      <th colSpan={"2"}>{category}</th>
-    </tr>
+    <>
+      <tr style={{ cursor: "pointer" }} onClick={() => handleClick(object)}>
+        <td>{object.name}</td>
+        <td>{object.difficulty}</td>
+        <td>{check}</td>
+      </tr>
+      {expandRow ? (
+        <tr className="row-expansion">
+          {object.clip ? (
+            <td colSpan={3}>
+              <iframe
+                className="clip-frame"
+                width="560"
+                height="315"
+                src={object.clip}
+              ></iframe>
+            </td>
+          ) : (
+            <td colSpan={3}>No Clip Uploaded (yet)!</td>
+          )}
+        </tr>
+      ) : null}
+    </>
   );
 }
 
-function ProductRow({ product }) {
-  const name = product.stocked ? (
-    product.name
+function ExpandableRow({ object, type }) {
+  const [expandRow, setExpandRow] = useState(false);
+  const handleClick = () => {
+    if (expandRow) {
+      setExpandRow(() => {
+        return false;
+      });
+    } else {
+      setExpandRow(() => {
+        return true;
+      });
+    }
+  };
+
+  const check = object.learned ? (
+    <div className="checked">&#9989;</div>
   ) : (
-    <span style={{ color: "red" }}>{product.name}</span>
+    <div className="not-checked">&#10060;</div>
   );
-  return (
-    <tr>
-      <td>{name}</td>
-      <td>{product.price}</td>
-    </tr>
-  );
+
+  if (type === "tricks") {
+    return (
+      <>
+        <TrickRow
+          handleClick={handleClick}
+          object={object}
+          expandRow={expandRow}
+          check={check}
+        />
+      </>
+    );
+  }
 }
 
-function ProductTable({ products, filterText, inStockOnly }) {
+function ContentTable({ content, type, filterText, filterCheckmark }) {
   const rows = [];
-  let lastCategory = null;
 
-  products.forEach((product) => {
-    if (inStockOnly && !product.stocked) {
+  content.forEach((object) => {
+    if (filterCheckmark && !object.learned) {
       return;
     }
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (object.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
-    if (product.category !== lastCategory) {
-      rows.push(
-        <ProductCategoryRow
-          category={product.category}
-          key={product.category}
-        />
-      );
-    }
-    rows.push(<ProductRow product={product} key={product.name} />);
-    lastCategory = product.category;
+    rows.push(<ExpandableRow object={object} type={type} key={object.name} />);
   });
   return (
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          {type === "tricks" ? (
+            <>
+              <th>Name</th>
+              <th>Difficulty</th>
+              <th>Learned</th>
+            </>
+          ) : null}
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -59,10 +94,11 @@ function ProductTable({ products, filterText, inStockOnly }) {
 }
 
 function SearchBar({
+  type,
   filterText,
-  inStockOnly,
+  filterCheckmark,
   onFilterTextChange,
-  onInStockOnlyChange,
+  onFilterCheckmarkChange,
 }) {
   return (
     <form>
@@ -75,32 +111,34 @@ function SearchBar({
       <label>
         <input
           type="checkbox"
-          checked={inStockOnly}
-          onChange={(e) => onInStockOnlyChange(e.target.checked)}
-        />{" "}
-        Only show products in stock
+          checked={filterCheckmark}
+          onChange={(e) => onFilterCheckmarkChange(e.target.checked)}
+        />
+        {type === "tricks" ? <>Only show learned tricks</> : null}
       </label>
     </form>
   );
 }
 
-function FilterTable({ products }) {
+function FilterTable({ content, type }) {
   const [filterText, setFilterText] = useState("");
-  const [inStockOnly, setInStockOnly] = useState(false);
+  const [filterCheckmark, setFilterCheckmark] = useState(false);
 
   return (
     <div>
       <SearchBar
+        type={type}
         filterText={filterText}
-        inStockOnly={inStockOnly}
+        filterCheckmark={filterCheckmark}
         onFilterTextChange={setFilterText}
-        onInStockOnlyChange={setInStockOnly}
+        onFilterCheckmarkChange={setFilterCheckmark}
       />
 
-      <ProductTable
-        products={products}
+      <ContentTable
+        content={content}
+        type={type}
         filterText={filterText}
-        inStockOnly={inStockOnly}
+        filterCheckmark={filterCheckmark}
       />
     </div>
   );

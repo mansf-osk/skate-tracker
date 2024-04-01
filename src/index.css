@@ -35,3 +35,20 @@ header ul li a {
     background-color: whitesmoke;
     padding: 5%;
 }
+
+.clip-frame {
+    border: 0;
+}
+
+.row-expansion {
+    background-color: rgb(164, 168, 172);
+}
+
+table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 10px;
+}
