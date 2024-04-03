@@ -24,6 +24,7 @@ func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Reques
 // Handlers for GRINDS AND SLIDES
 // -------------------------------------
 func (app *application) readGrindsAndSlidesHandler(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	err := app.writeJson(w, http.StatusOK, data.GrindsAndSlides, nil)
 	if err != nil {
 		app.logger.Error(err.Error())
@@ -32,6 +33,7 @@ func (app *application) readGrindsAndSlidesHandler(w http.ResponseWriter, r *htt
 }
 
 func (app *application) createGrindOrSlideHandler(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	var newTrick data.Trick
 
 	err := app.parseTrickJson(r, &newTrick)
@@ -49,6 +51,7 @@ func (app *application) createGrindOrSlideHandler(w http.ResponseWriter, r *http
 // Handlers for FLIPS
 // -------------------------------------
 func (app *application) readFlipsHandler(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	err := app.writeJson(w, http.StatusOK, data.Flips, nil)
 	if err != nil {
 		app.logger.Error(err.Error())
@@ -57,6 +60,7 @@ func (app *application) readFlipsHandler(w http.ResponseWriter, r *http.Request)
 }
 
 func (app *application) createFlipHandler(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	var newTrick data.Trick
 
 	err := app.parseTrickJson(r, &newTrick)
