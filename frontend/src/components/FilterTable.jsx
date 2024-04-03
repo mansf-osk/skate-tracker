@@ -73,7 +73,7 @@ function ContentTable({ content, type, filterText, filterCheckmark }) {
     if (object.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
-    rows.push(<ExpandableRow object={object} type={type} key={object.name} />);
+    rows.push(<ExpandableRow object={object} type={type} key={object.id} />);
   });
   return (
     <table>
