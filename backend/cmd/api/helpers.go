@@ -8,10 +8,6 @@ import (
 	"github.com/mansf-osk/skate-tracker/backend/internal/data"
 )
 
-func enableCors(w *http.ResponseWriter) {
-	(*w).Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
-}
-
 func (app *application) writeJson(w http.ResponseWriter, status int, data any, headers http.Header) error {
 	json, err := json.MarshalIndent(data, "", "\t")
 	if err != nil {
