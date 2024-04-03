@@ -27,7 +27,7 @@ var Flips = []Trick{
 	},
 	{
 		ID:         FlipId.NewId(),
-		Name:       "kickflip",
+		Name:       "heelflip",
 		Difficulty: "easy",
 		Learned:    false,
 	},

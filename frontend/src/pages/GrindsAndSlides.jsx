@@ -1,26 +1,25 @@
+import { useEffect, useState } from "react";
 import FilterTable from "../components/FilterTable";
-
-const DATA = [
-  {
-    difficulty: "hard",
-    learned: false,
-    name: "Smith",
-    clip: "https://www.youtube.com/embed/QxhxjUKvpv0",
-  },
-  {
-    difficulty: "medium",
-    learned: true,
-    name: "Nosegrind",
-    clip: "https://www.youtube.com/embed/QxhxjUKvpv0",
-  },
-  { difficulty: "easy", learned: true, name: "50-50" },
-  { difficulty: "easy", learned: true, name: "Five-O" },
-  { difficulty: "hard", learned: false, name: "Noseblunt" },
-  { difficulty: "easy", learned: true, name: "Boardslide" },
-];
+import { apiGetData } from "../api/ApiFunctions";
 
 function GrindsAndSlides() {
-  return <FilterTable content={DATA} type="tricks" />;
+  const [grindAndSlideData, setGrindAndSlideData] = useState([]);
+
+  const endpoint = "/v1/grinds-and-slides";
+  const options = {
+    method: "GET"
+  };
+
+  useEffect(() => {
+    apiGetData(endpoint, options)
+      .then((data) => {
+        setGrindAndSlideData(data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data: ", error)
+      })
+  }, []);
+  return <FilterTable content={grindAndSlideData} type="tricks" />;
 }
 
 export default GrindsAndSlides;
