@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Flips from "./pages/Flips";
 import GrindsAndSlides from "./pages/GrindsAndSlides";
 import AddTrick from "./pages/AddTrick";
+import Contact from "./pages/Contact";
+import DataPrivacy from "./pages/DataPrivacy";
 import Copyright from "./pages/Copyright";
 import Impressum from "./pages/Impressum";
 
@@ -21,8 +23,10 @@ function App() {
             <Route path="/flips" element={<Flips />} />
             <Route path="/grinds-and-slides" element={<GrindsAndSlides />} />
             <Route path="/add-trick" element={<AddTrick />} />
-            <Route path="/copyright" element={<Copyright />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/impressum" element={<Impressum />} />
+            <Route path="/data-privacy" element={<DataPrivacy />} />
+            <Route path="/copyright" element={<Copyright />} />
           </Routes>
         </div>
       </main>
