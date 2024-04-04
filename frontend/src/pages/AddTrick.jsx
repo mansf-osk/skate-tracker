@@ -59,22 +59,30 @@ function AddTrick() {
         <br />
 
         <label htmlFor="name">Trick name:</label>
-        <input type="text" id="name" name="name" value={form.name} onChange={handleChange} />
+        <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required />
         <br />
 
         <label htmlFor="select-difficulty">Select difficulty:</label>
         <select id="select-difficulty" name="difficulty" value={form.difficulty} onChange={handleChange}>
-          <option value="easy">easy</option>
-          <option value="medium">medium</option>
-          <option value="hard">hard</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
         <br />
 
-        <label htmlFor="clip">Clip link:</label>
+        <label htmlFor="clip">Clip link:
+          <span className="info">&#9432;
+            <span className="tooltip">
+              <p>It is recommended to use Youtube embedded links!</p>
+              <p>e.g. youtube.com/embed/ABCDEFG</p>
+              <p>(with ABCDEFG being the video ID like in https://www.youtube.com/watch?v=ABCDEFG)</p>
+            </span>
+          </span>
+        </label>
         <input type="text" id="clip" name="clip" value={form.clip} onChange={handleChange} />
         <br />
 
-        <label htmlFor="learned">Have you learned the trick?</label>
+        <label className="checkbox" htmlFor="learned">Have you learned the trick?</label>
         <input type="checkbox" id="learned" name="learned" checked={form.learned} onChange={handleCheckbox} />
         <br />
 
