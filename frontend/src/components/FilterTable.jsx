@@ -29,7 +29,7 @@ function TrickRow({ handleClick, object, expandRow, check }) {
   );
 }
 
-function ExpandableRow({ object, type }) {
+function ExpandableRow({ object }) {
   const [expandRow, setExpandRow] = useState(false);
   const handleClick = () => {
     if (expandRow) {
@@ -49,21 +49,17 @@ function ExpandableRow({ object, type }) {
     <div className="not-checked">&#10060;</div>
   );
 
-  if (type === "tricks") {
-    return (
-      <>
-        <TrickRow
-          handleClick={handleClick}
-          object={object}
-          expandRow={expandRow}
-          check={check}
-        />
-      </>
-    );
-  }
+  return (
+    <TrickRow
+      handleClick={handleClick}
+      object={object}
+      expandRow={expandRow}
+      check={check}
+    />
+  );
 }
 
-function ContentTable({ content, type, filterText, filterCheckmark }) {
+function ContentTable({ content, filterText, filterCheckmark }) {
   const rows = [];
 
   content.forEach((object) => {
@@ -73,19 +69,15 @@ function ContentTable({ content, type, filterText, filterCheckmark }) {
     if (object.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
-    rows.push(<ExpandableRow object={object} type={type} key={object.id} />);
+    rows.push(<ExpandableRow object={object} key={object.id} />);
   });
   return (
     <table>
       <thead>
         <tr>
-          {type === "tricks" ? (
-            <>
-              <th>Name</th>
-              <th>Difficulty</th>
-              <th>Learned</th>
-            </>
-          ) : null}
+          <th>Name</th>
+          <th>Difficulty</th>
+          <th>Learned</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -94,7 +86,6 @@ function ContentTable({ content, type, filterText, filterCheckmark }) {
 }
 
 function SearchBar({
-  type,
   filterText,
   filterCheckmark,
   onFilterTextChange,
@@ -102,20 +93,21 @@ function SearchBar({
 }) {
   return (
     <form>
+      <label htmlFor="search">Filter by name</label>
       <input
+        id="search"
         type="text"
         value={filterText}
         placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)}
       />
-      <label>
-        <input
-          type="checkbox"
-          checked={filterCheckmark}
-          onChange={(e) => onFilterCheckmarkChange(e.target.checked)}
-        />
-        {type === "tricks" ? <>Only show learned tricks</> : null}
-      </label>
+      <label className="checkbox" htmlFor="filter">Only show learned tricks</label>
+      <input
+        id="filter"
+        type="checkbox"
+        checked={filterCheckmark}
+        onChange={(e) => onFilterCheckmarkChange(e.target.checked)}
+      />
     </form>
   );
 }
@@ -127,7 +119,6 @@ function FilterTable({ content, type }) {
   return (
     <div>
       <SearchBar
-        type={type}
         filterText={filterText}
         filterCheckmark={filterCheckmark}
         onFilterTextChange={setFilterText}

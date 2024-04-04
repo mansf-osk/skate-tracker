@@ -19,7 +19,12 @@ function GrindsAndSlides() {
         console.log("Error fetching data: ", error)
       })
   }, []);
-  return <FilterTable content={grindAndSlideData} type="tricks" />;
+  return (
+    <>
+      <h2>Tracked grinds and slides</h2>
+      <FilterTable content={grindAndSlideData} type="tricks" />
+    </>
+  );
 }
 
 export default GrindsAndSlides;

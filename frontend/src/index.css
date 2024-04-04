@@ -1,33 +1,50 @@
 body {
-    background-color: cornflowerblue;
-    padding: 5%;
-    margin: 0;
-    font-family: Tahoma;
+  background-color: cornflowerblue;
+  padding: 5%;
+  margin: auto;
+  max-width: 960px;
+  font-family: Tahoma;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header styling */
 header h1.title {
   text-align: end;
 }
 
 header ul {
-    background-color: darkslategrey;
-    padding: 0;
+  background-color: darkslategrey;
+  padding: 0;
 }
 
 header ul li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
+  display: inline;
+  list-style-type: none;
+  margin: 0;
 }
 
 header ul li a {
-    color: whitesmoke;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 2%;
-    display: inline-block;
+  color: whitesmoke;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 2%;
+  display: inline-block;
 }
 
+header ul li a.active {
+  background-color: rgba(19, 243, 243, 0.479);
+}
+
+/* Content styling */
+.content {
+  background-color: whitesmoke;
+  padding: 5%;
+}
+
+/* Footer styling */
 footer ul {
   background-color: darkslategrey;
   padding: 0;
@@ -48,32 +65,129 @@ footer ul li a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+/* Form styling*/
+form {
+  margin: 1rem;
+  margin-bottom: 2rem;
 }
 
-.active header {
-    background-color: rgba(19, 243, 243, 0.479);
+form label{
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-.content {
-    background-color: whitesmoke;
-    padding: 5%;
+form label.checkbox {
+  display: inline;
+  padding-right: 1rem;
+}
+
+form input[type=text], form select {
+  width: 30%;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+form input[type=text] {
+  width: 100%;
+}
+
+form input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: cornflowerblue;
+}
+
+form button[type=submit] {
+  width: 30%;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 15px;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+  font-size: 90%;
+  float: right;
+}
+
+/* Infobox for "clip" input */
+.info {
+  position: relative;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.info .tooltip {
+/* Tooltip text and alignment */
+  visibility: hidden;
+  width: 300px;
+  background-color: cornflowerblue;
+  border: 1px solid darkslategrey;
+  color: whitesmoke;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-weight: normal;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -150px;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.info .tooltip::after {
+/* Tooltip arrow */
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.info:hover .tooltip {
+/* Tooltip visibility on hover */
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* Table styling */
+table {
+  margin: 1rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: darkslategrey;
+}
+
+thead th {
+  color: whitesmoke;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
 .clip-frame {
-    border: 0;
+  border: 0;
 }
 
 .row-expansion {
-    background-color: rgb(164, 168, 172);
-}
-
-table {
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-}
-
-td, th {
-    padding: 10px;
+  background-color: #ddd;
 }

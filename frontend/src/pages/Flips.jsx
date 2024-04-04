@@ -19,7 +19,12 @@ function Flips() {
         console.log("Error fetching data: ", error);
       })
   }, []);
-  return <FilterTable content={flipData} type="tricks" />;
-}
+  return (
+    <>
+      <h2>Tracked flip tricks</h2>
+      <FilterTable content={flipData} type="tricks" />
+    </>
+  );
+};
 
 export default Flips;
