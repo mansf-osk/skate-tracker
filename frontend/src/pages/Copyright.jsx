@@ -16,6 +16,6 @@ function Copyright() {
       </p>
     </div>
   );
-}
+};
 
 export default Copyright;

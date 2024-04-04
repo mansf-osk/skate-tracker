@@ -5,9 +5,10 @@ body {
     font-family: Tahoma;
 }
 
-header h1 {
-    text-align: end;
+header h1.title {
+  text-align: end;
 }
+
 header ul {
     background-color: darkslategrey;
     padding: 0;
@@ -27,7 +28,31 @@ header ul li a {
     display: inline-block;
 }
 
-.active {
+footer ul {
+  background-color: darkslategrey;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+footer ul li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}
+
+footer ul li a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.active header {
     background-color: rgba(19, 243, 243, 0.479);
 }
 

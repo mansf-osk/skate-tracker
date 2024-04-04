@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Header() {
   return (
     <header>
-      <h1>Skate-Tracker</h1>
+      <h1 className="title">Skate-Tracker</h1>
       <nav>
         <ul className="header">
           <li>
