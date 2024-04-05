@@ -11,7 +11,11 @@ import Contact from "./pages/Contact";
 import DataPrivacy from "./pages/DataPrivacy";
 import Copyright from "./pages/Copyright";
 import Impressum from "./pages/Impressum";
+import NotFound from "./pages/NotFound";
 
+// Parent component for the whole page.
+// Displays header and footer and routes between all the different pages and their components.
+// Catch-all route at the bottom to display NotFound for wrong routes.
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +31,7 @@ function App() {
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/data-privacy" element={<DataPrivacy />} />
             <Route path="/copyright" element={<Copyright />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </main>

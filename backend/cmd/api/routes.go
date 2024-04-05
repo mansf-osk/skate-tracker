@@ -5,8 +5,11 @@ import (
 )
 
 func (app *application) routes() http.Handler {
+	// Create ServeMux (the router).
 	mux := http.NewServeMux()
 
+	// Register endpoints.
+	// Note the OPTIONS endpoints for preflight CORS requests during POST requests.
 	mux.HandleFunc("GET /v1/healthcheck", app.healthcheckHandler)
 	mux.Handle("GET /v1/grinds-and-slides", CORS(http.HandlerFunc(app.readGrindsAndSlidesHandler)))
 	mux.Handle("POST /v1/grinds-and-slides", CORS(http.HandlerFunc(app.createGrindOrSlideHandler)))

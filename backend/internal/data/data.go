@@ -1,5 +1,6 @@
 package data
 
+// Custom ID datatype with NewId method for incrementing IDs.
 type id int64
 
 func (id *id) NewId() id {
@@ -7,6 +8,7 @@ func (id *id) NewId() id {
 	return *id
 }
 
+// Trick datatype to represent json format.
 type Trick struct {
 	ID         id     `json:"id"`
 	Name       string `json:"name"`
@@ -15,6 +17,7 @@ type Trick struct {
 	Clip       string `json:"clip,omitempty"`
 }
 
+// Initial Flips data.
 var FlipId id = 0
 
 var Flips = []Trick{
@@ -23,7 +26,7 @@ var Flips = []Trick{
 		Name:       "kickflip",
 		Difficulty: "easy",
 		Learned:    true,
-		Clip:       "https://www.youtube.com/embed/QxhxjUKvpv0",
+		Clip:       "QxhxjUKvpv0",
 	},
 	{
 		ID:         FlipId.NewId(),
@@ -33,6 +36,7 @@ var Flips = []Trick{
 	},
 }
 
+// Initial Grind and Slide data.
 var GrindAndSlideId id = 0
 
 var GrindsAndSlides = []Trick{
@@ -41,7 +45,7 @@ var GrindsAndSlides = []Trick{
 		Name:       "50-50",
 		Difficulty: "easy",
 		Learned:    true,
-		Clip:       "https://www.youtube.com/embed/xYg4ertEUeo?si=RTVbsdpInqjHn5uy&amp;start=356",
+		Clip:       "xYg4ertEUeo?si=RTVbsdpInqjHn5uy&amp;start=356",
 	},
 	{
 		ID:         GrindAndSlideId.NewId(),

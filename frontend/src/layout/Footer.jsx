@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+// Creates the footer that is displayed on all pages.
+// Links to github and the various footer pages.
 function Footer() {
   return (
     <footer>

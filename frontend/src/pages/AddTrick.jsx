@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { apiPostTrick } from "../api/ApiFunctions";
 
+// Initial form state
 const INITIAL_STATE = {
   type: "flip",
   name: "",
@@ -9,9 +10,12 @@ const INITIAL_STATE = {
   learned: false,
 };
 
+// Handles the form for adding a trick.
+// Manages state for when the form is submitted.
 function AddTrick() {
   const [form, setForm] = useState(INITIAL_STATE);
 
+  // Writes form values to form variable
   const handleChange = (event) => {
     setForm({
       ...form,
@@ -19,6 +23,7 @@ function AddTrick() {
     });
   };
 
+  // Writes checkbox state to form variable
   const handleCheckbox = (event) => {
     setForm({
       ...form,
@@ -26,6 +31,7 @@ function AddTrick() {
     });
   }
 
+  // Handles form submission by calling the respecting POST endpoint and resetting the form to initial state.
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -38,7 +44,6 @@ function AddTrick() {
       endpoint = "/v1/grinds-and-slides";
     };
 
-    console.log(form)
     apiPostTrick(endpoint, form)
       .catch((error) => {
         console.log("Error fetching data: ", error);
@@ -47,6 +52,7 @@ function AddTrick() {
     setForm(INITIAL_STATE);
   };
 
+  // HTML for the form.
   return (
     <>
       <h2>Add a new trick by filling the form below!</h2>
@@ -70,12 +76,13 @@ function AddTrick() {
         </select>
         <br />
 
-        <label htmlFor="clip">Clip link:
+        <label htmlFor="clip">Youtube clip ID:
           <span className="info">&#9432;
             <span className="tooltip">
-              <p>It is recommended to use Youtube embedded links!</p>
-              <p>e.g. youtube.com/embed/ABCDEFG</p>
-              <p>(with ABCDEFG being the video ID like in https://www.youtube.com/watch?v=ABCDEFG)</p>
+              <p>Please input the youtube video ID.</p>
+              <p>e.g. for the video at <br />
+                https://www.youtube.com/watch?v=AbCDeFG <br />
+                enter AbCDeFG</p>
             </span>
           </span>
         </label>
