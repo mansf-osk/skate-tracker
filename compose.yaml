@@ -3,6 +3,8 @@ services:
     container_name: skate-tracker-frontend
     build:
       context: ./frontend
+      args:
+        - NODE_ENV=development
     volumes:
       - ./frontend:/app
     ports:
