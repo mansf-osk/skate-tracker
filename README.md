@@ -10,10 +10,13 @@ An installation of docker with docker compose is required!
 ```bash
 git clone https://github.com/mansf-osk/skate-tracker.git
 ```
-Or alternatively download as .zip via the Github GUI and unzip with e.g. 7zip.
+- or alternatively download as .zip via the Github GUI and unzip with e.g. 7zip.
 
 2. Move to project root directory:
-- This should be the directory containing the compose.yaml file.
+```bash
+cd skate-tracker
+```
+- This should be the directory containing the `compose.yaml` file.
 
 3. Start up application:
 ```bash
