@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function TrickRow({ handleClick, object, expandRow, check }) {
+// Fills the row with content, creates the row expansion if the state for it is true.
+function TrickRow({ handleClick, object, expandRow }) {
+  const check = object.learned ? (
+    <div className="checked">&#9989;</div>
+  ) : (
+    <div className="not-checked">&#10060;</div>
+  );
+
   return (
     <>
-      <tr style={{ cursor: "pointer" }} onClick={() => handleClick(object)}>
+      <tr className="trick-row" onClick={() => handleClick(object)}>
         <td>{object.name}</td>
         <td>{object.difficulty}</td>
         <td>{check}</td>
@@ -17,7 +24,7 @@ function TrickRow({ handleClick, object, expandRow, check }) {
                 className="clip-frame"
                 width="560"
                 height="315"
-                src={object.clip}
+                src={"https://youtube.com/embed/" + object.clip}
               ></iframe>
             </td>
           ) : (
@@ -29,6 +36,8 @@ function TrickRow({ handleClick, object, expandRow, check }) {
   );
 }
 
+// Creates a row that can be expanded by clicking on it. For each row it calls the TrickRow component.
+// Manages the expansions state to re-render the row when it is clicked.
 function ExpandableRow({ object }) {
   const [expandRow, setExpandRow] = useState(false);
   const handleClick = () => {
@@ -43,22 +52,16 @@ function ExpandableRow({ object }) {
     }
   };
 
-  const check = object.learned ? (
-    <div className="checked">&#9989;</div>
-  ) : (
-    <div className="not-checked">&#10060;</div>
-  );
-
   return (
     <TrickRow
       handleClick={handleClick}
       object={object}
       expandRow={expandRow}
-      check={check}
     />
   );
 }
 
+// Displays table content. For each entry it checks the filters and calls the ExpandableRow component accordingly.
 function ContentTable({ content, filterText, filterCheckmark }) {
   const rows = [];
 
@@ -85,6 +88,7 @@ function ContentTable({ content, filterText, filterCheckmark }) {
   );
 }
 
+// Changes state when the filters are used so other components can re-render.
 function SearchBar({
   filterText,
   filterCheckmark,
@@ -112,6 +116,7 @@ function SearchBar({
   );
 }
 
+// Parent component. Manages state for the filters and calls the SearchBar and ContentTable components.
 function FilterTable({ content, type }) {
   const [filterText, setFilterText] = useState("");
   const [filterCheckmark, setFilterCheckmark] = useState(false);

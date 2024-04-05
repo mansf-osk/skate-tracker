@@ -135,7 +135,7 @@ form button[type=submit] {
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -146px;
 
   opacity: 0;
   transition: opacity 0.3s;
@@ -182,6 +182,10 @@ td {
   text-align: center;
   padding: 10px;
   border: 1px solid #ccc;
+}
+
+tr.trick-row {
+  cursor: pointer;
 }
 
 .clip-frame {

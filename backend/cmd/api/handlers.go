@@ -6,6 +6,7 @@ import (
 	"github.com/mansf-osk/skate-tracker/backend/internal/data"
 )
 
+// Healthcheck handler for testing purposes.
 func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
 	data := map[string]string{
 		"status":      "available",

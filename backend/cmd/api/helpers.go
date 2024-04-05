@@ -8,6 +8,7 @@ import (
 	"github.com/mansf-osk/skate-tracker/backend/internal/data"
 )
 
+// Writes JSON data to ResponseWriter and sets the correct HTTP headers.
 func (app *application) writeJson(w http.ResponseWriter, status int, data any, headers http.Header) error {
 	json, err := json.MarshalIndent(data, "", "\t")
 	if err != nil {

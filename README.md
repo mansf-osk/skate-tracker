@@ -1,8 +1,21 @@
-# React + Vite
+# Skate Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A toy project written for the webdev uni course at HWR Berlin using a react frontend and a golang stdlib backend communicating via rest-api.
 
-Currently, two official plugins are available:
+## How to run the application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+An installation of docker with docker compose is required!
+
+1. Download code:
+```bash
+git clone https://github.com/mansf-osk/skate-tracker.git
+```
+Or alternatively download as .zip via the Github GUI and unzip with e.g. 7zip.
+
+2. Move to project root directory:
+- This should be the directory containing the compose.yaml file.
+
+3. Start up application:
+```bash
+docker compose up
+```

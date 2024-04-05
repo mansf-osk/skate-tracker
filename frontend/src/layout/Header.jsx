@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+// Creates the header that is displayed on all pages.
+// Links the the main pages.
 function Header() {
   return (
     <header>

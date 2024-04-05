@@ -1,6 +1,10 @@
 const url = "http://localhost:4000"
 
-export async function apiGetData(endpoint, options) {
+// Calls the GET endpoint via fetch() and returns the data
+export async function apiGetData(endpoint) {
+  const options = {
+    method: "GET"
+  };
   const apiUrl = url + endpoint;
   console.log("Initiating API-call to: \n", apiUrl);
 
@@ -15,6 +19,7 @@ export async function apiGetData(endpoint, options) {
     });
 }
 
+// Calls the POST endpoint with formData in the body
 export async function apiPostTrick(endpoint, formData) {
   const apiUrl = url + endpoint;
   console.log("Initiating API-call to: \n", apiUrl);

@@ -5,9 +5,9 @@ function Impressum() {
       <p>The following information (Impressum) is required under German law.</p>
       <ul>
         <li>Oskar Mansfeld</li>
-        <li>Archibaldweg 38</li>
-        <li>10317 Berlin</li>
-        <li>mansfeld.oskar@gmail.com</li>
+        <li>Musterweg 48</li>
+        <li>12345 Berlin</li>
+        <li>s_mansfeld22@stud.hwr-berlin.de</li>
       </ul>
     </div>
   );
