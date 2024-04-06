@@ -5,7 +5,5 @@ import "./index.css";
 
 // Entrypoint for the website rendering the App component.
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );
